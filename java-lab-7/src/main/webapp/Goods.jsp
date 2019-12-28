@@ -1,5 +1,4 @@
-<%@ page import="ru.shakurov.webapp_javalab.dto.GoodDto" %>
-<%@ page import="java.util.List" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -18,69 +17,47 @@
     <input type="number" name="good_price" placeholder="Price">
     <input type="submit" value="Add">
 </form>
-<%
-    List<GoodDto> myGoods = (List<GoodDto>) request.getAttribute("myGoods");
-    List<GoodDto> allGoods = (List<GoodDto>) request.getAttribute("allGoods");
-%>
-<%--
 <c:if test="${myGoods != null}">
---%>
-<%if (myGoods != null) {%>
-<h2>My goods</h2>
-<table>
-    <thead>
-    <tr>
-        <th>name</th>
-        <th>price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%--<c:forEach var="good" items="${myGoods}">--%>
-    <% for (GoodDto myGood : myGoods) {%>
-
-
-    <tr>
-        <td><%--${good.name}--%><%=myGood.getName()%></td>
-        <td><%--${good.price}--%><%=myGood.getPrice()%></td>
-    </tr>
-    <%--</c:forEach>--%>
-    <%}%>
-    </tbody>
-</table>
-
-<%}%>
-<%--</c:if>--%>
+    <h2>My goods</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="good" items="${myGoods}">
+            <tr>
+                <td>${good.name}</td>
+                <td>${good.price}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</c:if>
 <hr>
 <hr>
 <hr>
 <hr>
-<%if (allGoods != null) {%>
-<%--
 <c:if test="${allGoods != null}">
---%>
-<h2>All goods</h2>
-<table>
-    <thead>
-    <tr>
-        <th>name</th>
-        <th>price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%--
-            <c:forEach var="good" items="${allGoods}">
-    --%>
-    <% for (GoodDto myGood : allGoods) {%>
-    <tr>
-        <td><%--${good.name}--%><%=myGood.getName()%></td>
-        <td><%--${good.price}--%><%=myGood.getPrice()%></td>
-    </tr>
-    <%--</c:forEach>--%>
-    <%}%>
-    </tbody>
-</table>
-<%}%>
-
-<%--</c:if>--%>
+    <h2>All goods</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="good" items="${allGoods}">
+            <tr>
+                <td>${good.name}</td>
+                <td>${good.price}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</c:if>
 </body>
 </html>
